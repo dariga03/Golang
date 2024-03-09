@@ -1,0 +1,55 @@
+### Create Artifact Item
+POST localhost:8081/api/v1/menus
+Content-Type: application/json
+
+{
+    "id": "101",
+    "title": "Ancient Relic",
+    "description": "A mysterious artifact from the past",
+	"age": 500,
+    "location": "Lost City",
+	"researcher_id": 1
+}
+
+
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Get Artifact Item
+GET localhost:8081/artifacts/1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Update Artifact Item
+PUT localhost:8081/artifacts/1
+Content-Type: application/json
+
+{
+    "title":"nil",
+    "age":65,
+    "researchers_id": 2
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Delete Artifact Item
+DELETE localhost:8081/artifacts/1
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
